@@ -1,14 +1,10 @@
-package com.haitiand.modbuslib.manager;
+package com.codeayit.smokerobotlibala;
 
-import android.os.StatFs;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import android.text.method.KeyListener;
 import android.util.Log;
 
 import com.ala.ALAdevicestatusrw.ALA_Device_SerialApi;
-
-import java.util.Map;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

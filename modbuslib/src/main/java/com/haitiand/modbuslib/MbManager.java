@@ -1,19 +1,10 @@
-package com.haitiand.modbuslib.manager;
+package com.haitiand.modbuslib;
 
 import android.content.Context;
 import android.os.SystemClock;
 import android.util.Log;
 
 import com.ala.libmodbusapi.libmodbusapi;
-import com.haitiand.modbuslib.Exceptions.PlcException;
-import com.haitiand.modbuslib.interfaces.OnInitListener;
-import com.haitiand.modbuslib.interfaces.OnReadLinstener;
-import com.haitiand.modbuslib.interfaces.OnWriteLinstener;
-
-import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 
 /**
