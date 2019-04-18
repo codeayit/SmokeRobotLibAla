@@ -73,6 +73,8 @@ public class MbManager {
     public boolean init(Context context,int busId,long timeOut,String path, int baudrate, int dataBits, int stopBits) {
         mContext = context;
         modbusApi = new libmodbusapi();
+        myBusId = busId;
+        myTimeOut = timeOut;
         int fid = modbusApi.init_modbus(path, busId, baudrate, dataBits, stopBits, 3000, 3000);
         if (fid < 0) {
             inited = false;
@@ -85,7 +87,7 @@ public class MbManager {
     public int  read_registers(final int addr)   {
         int[] holdingRegs = new int[1];
         int code =  modbusApi.modbus_read_registers(myBusId, addr, 1, holdingRegs);
-        Log.d(TAG,"read_registers :addr="+addr+" , value="+holdingRegs[0]+" , code="+code);
+        Log.d(TAG,"read_registers :busId="+myBusId+"，addr="+addr+" , value="+holdingRegs[0]+" , code="+code);
         if (code<0){
             code = CODE_ERROR;
             return code;
@@ -98,7 +100,7 @@ public class MbManager {
     public int read_registers32(int addr) {
         int[] holdingRegs = new int[2];
         int code =  modbusApi.modbus_read_registers(myBusId, addr, 2, holdingRegs);
-        Log.d(TAG,"read_registers :addr="+addr+" , value="+holdingRegs[0]+" , code="+code);
+        Log.d(TAG,"read_registers :busId="+myBusId+"，addr="+addr+" , value="+holdingRegs[0]+" , code="+code);
         if (code<0){
             code = CODE_ERROR;
             return code;
@@ -115,7 +117,7 @@ public class MbManager {
 
     public int write_registers(final int addr, final int value){
         int code = modbusApi.modbus_write_register(myBusId, addr, value);
-        Log.d(TAG,"write_registers :addr="+addr+" , value="+value+" , code="+code);
+        Log.d(TAG,"write_registers :busId="+myBusId+"addr="+addr+" , value="+value+" , code="+code);
         if (code<0){
             code = CODE_ERROR;
         }else{
@@ -126,7 +128,7 @@ public class MbManager {
 
     public int write_registers32(int addr, int value) {
         int code = modbusApi.modbus_write_register(myBusId, addr, value);
-        Log.d(TAG,"write_registers32 :addr="+addr+" , value="+value+" , code="+code);
+        Log.d(TAG,"write_registers32 :busId="+myBusId+"addr="+addr+" , value="+value+" , code="+code);
         if (code<0){
             code = CODE_ERROR;
 
